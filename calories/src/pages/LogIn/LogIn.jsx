@@ -1,32 +1,36 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Both fields are required!');
-      return;
+
+    
+    if (email === 'test@example.com' && password === 'password123') {
+      navigate('/profile', {
+        state: {
+          name: 'John Doe',
+          email,
+          memberSince: '2023-01-01',
+          lastLogin: '2024-11-19',
+        },
+      });
+    } else {
+      setError('Invalid email or password');
     }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setError('Please enter a valid email address!');
-      return;
-    }
-    setError('');
-    alert('Login successful!'); 
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
       {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleLogin}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -35,31 +39,28 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
+            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <div className="password-wrapper">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="show-password-btn"
-            >
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+          />
         </div>
-        <button type="submit" className="login-button">Login</button>
+
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
+
       <p className="register-link">
-        No login yet? <Link to="/register">Register here</Link>
+        No account yet? <a href="/register">Register here</a>
       </p>
     </div>
   );
