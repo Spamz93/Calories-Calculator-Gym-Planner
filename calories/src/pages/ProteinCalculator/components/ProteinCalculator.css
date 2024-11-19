@@ -1,0 +1,50 @@
+.protein-calculator {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .protein-calculator h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  .protein-calculator {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.protein-calculator h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem; 
+}
+
+.protein-calculator p {
+    font-size: 1rem; 
+    color: #555; 
+    line-height: 1.5; 
+}
+
+.protein-calculator button {
+    margin-top: 1rem; 
+    padding: 0.5rem 1rem; 
+    background-color: #3498db; 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.protein-calculator button:hover {
+    background-color: #2980b9; 
+}
